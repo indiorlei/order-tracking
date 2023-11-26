@@ -23,4 +23,4 @@ Abrir http://localhost:3000 com seu navegador para ver o resultado.
 
 Para testar, pode usar os pedidos `102030` ou `123456`
 
-Pode visitar aqui, https://rastreamento-de-pedidos.vercel.app/https://rastreador-de-pacotes-indiorlei.vercel.app/
+Pode visitar aqui, https://rastreamento-de-pedidos.vercel.app/
