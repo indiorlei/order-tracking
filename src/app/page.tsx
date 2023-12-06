@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import {
@@ -11,6 +12,7 @@ import {
   Box,
   Grid,
   Typography,
+  Modal,
 } from "@mui/material";
 
 import { TrackingInfo } from "@/components/tracking-info";
@@ -24,9 +26,17 @@ export default function HomePage() {
   const [trackingCode, setTrackingCode] = useState("");
   const [delivery, setDelivery] = useState<any>();
   const [error, setError] = useState<any>(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (event.currentTarget.trackingCode.value == 696969) {
+      setOpenModal(true);
+
+      return;
+    }
+
     setTrackingCode(event.currentTarget.trackingCode.value);
   };
 
@@ -128,6 +138,30 @@ export default function HomePage() {
           receiver={delivery?.receiver?.address}
         />
       </Grid>
+
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute" as "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            p: 4,
+          }}
+        >
+          <Image
+            src="/nig.png"
+            alt="acompanhar entrega"
+            width={1110}
+            height={762}
+          />
+        </Box>
+      </Modal>
     </Grid>
   );
 }
